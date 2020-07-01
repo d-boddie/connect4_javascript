@@ -1,0 +1,50 @@
+:root{
+    box-sizing: border-box;
+
+}
+#board { 
+    display: flex;
+    border: 5px solid rgb(2, 2, 2);
+    background: yellow;
+    height: 400px;
+    width: 500px;
+    margin: 100px auto;
+}
+
+.column {
+    flex-direction: column;
+    background: purple;
+    /* height: 400px;
+    width: 200px; */
+    flex-grow: 1;
+    outline: 5px solid darkblue;
+    
+}
+
+.row{
+    outline: 1px solid black;
+    height: 67px;
+    flex-grow: 1;
+   
+}
+.disc{
+    height:50px;
+    width:200px;
+    display: flex;
+    margin:100px auto;
+
+}
+#discYellow{
+    height:50px;
+    width:58px;
+    border-radius: 50%;
+    background-color: yellow;
+    margin:10px;
+}
+#discRed{
+    height:50px;
+    width:58px;
+    border-radius: 50%;
+    background-color: red;
+    margin:10px;
+}
