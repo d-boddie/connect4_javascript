@@ -1,3 +1,6 @@
+//We used some of Randy's start up code and we were coached by Tim La and Missi.
+
+
 
 const boardModel = [
     [null, null, null, null, null, null, null],
@@ -30,32 +33,27 @@ function displayBoard(boardModel) {
 
 }
 
-//This picks up the disc and puts it down
+//This picks up the disc and puts it down and switches players
 function dropDisc (colNum) {
     const columnNode = event.currentTarget;
     selectedDisc = document.createElement("div")
-    if (currentPlayer === 1) {
-        selectedDisc.className = "discYellow"
-        columnNode.appendChild(selectedDisc);
-        currentPlayer = 2
-    }else {
-        selectedDisc.className = "discRed"
-        columnNode.appendChild(selectedDisc);
-        currentPlayer = 1
+    if(columnNode.childElementCount < 6){
+
+        if (currentPlayer === 1) {
+            selectedDisc.className = "discYellow"
+            columnNode.appendChild(selectedDisc);
+            currentPlayer = 2
+        }else {
+            selectedDisc.className = "discRed"
+            columnNode.appendChild(selectedDisc);
+            currentPlayer = 1
+        }
+      
     }
-    //selectedDisc.className = "discRed"
-    
-
-
+ 
 }
 
 
-
-// const colNum = function () {
-//     if (colNum !== 6) {
-//         return null
-//     }
-// }
 function initializeGame() {
     displayBoard(boardModel)
     createColEvtLstnr()
