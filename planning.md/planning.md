@@ -71,7 +71,8 @@ const displayTieMessage = function () {
 }
 
 const displayWinMessage = function () {
-    displayMessage("Winner is _____")    
+    displayMessage("Winner is _____") 
+   
 }
 
 
@@ -135,3 +136,38 @@ if (mode === "inhand") {
         //let displayPlayer = document.getElementById("currentPlayerMsg")
         //let player1 = discYellow
 let player2 = discRed
+
+
+
+function checkBoard() {
+    let discRed = "discRed";
+    let discYellow = "discYellow";
+    for (let i = 0; i < boardModel.length; i++) {
+        for (let selectedDisc = 0; selectedDisc <= boardModel.length; selectedDisc++) {
+                if (discRed === 4){
+                    alert("red win")
+                } else if(discYellow === 4){
+                    alert("Yellow Wins")
+                }
+
+            }
+        }
+    }
+
+
+  let columnIndex = Number(columnNode.id.slice(-1))
+    //This function will match the Connect Four board's coordinates to the array's when a disc is dropped
+    function updateGameboard() {
+      //Backwards 
+        //1.Instead of putting an item on the top of the array, it will put an item on the bottom of the array
+        //2.The gameModel will be filled with discs until 0,0
+        //3.Once a row is filled, the row above it will be next because the array is starting at 5 (5,4,3,2,1,0)
+      for (let row = boardModel.length - 1; row >= 0; row--) {
+        //If there is no item in an array, then add the item 1 or 2 corresponding the player's turn
+        if (boardModel[row][columnIndex] === 0) {
+          boardModel[row][columnIndex] = currentPlayer;
+          break;
+        }
+      }
+    }
+    updateGameboard();

@@ -12,7 +12,6 @@
 }
 
 .column {
-    
     background: purple;
     /* height: 400px; */
     width: 200px;
@@ -25,7 +24,6 @@
 .row{
     outline: 1px solid black;
     height: 67px;
-    flex-grow: 1;
    
 }
 .disc{
