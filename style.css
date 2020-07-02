@@ -12,12 +12,13 @@
 }
 
 .column {
-    flex-direction: column;
+    
     background: purple;
-    /* height: 400px;
-    width: 200px; */
-    flex-grow: 1;
+    /* height: 400px; */
+    width: 200px;
     outline: 5px solid darkblue;
+    display: flex;
+    flex-direction: column-reverse;
     
 }
 
@@ -34,14 +35,14 @@
     margin:100px auto;
 
 }
-#discYellow{
+.discYellow{
     height:50px;
     width:58px;
     border-radius: 50%;
     background-color: yellow;
     margin:10px;
 }
-#discRed{
+.discRed{
     height:50px;
     width:58px;
     border-radius: 50%;

@@ -110,3 +110,28 @@ const initializeGame = function () {
 }
 
 initializeGame()
+
+
+
+
+//1. Create a disc (as a div)
+//2. Assign the disc to a class (ex. disc red)
+//3. Append to the tower
+
+
+
+
+if (mode === "inhand") {
+    }
+
+//disc
+        // if (columnNode.hasChildNodes()) {
+        //     //selectedDisc = columnNode.lastElementChild;
+        //     columnNode.appendChild(selectedDisc);
+        //     mode = "notinhand"
+        // }
+
+        Extra Variables
+        //let displayPlayer = document.getElementById("currentPlayerMsg")
+        //let player1 = discYellow
+let player2 = discRed
