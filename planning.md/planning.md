@@ -1,3 +1,5 @@
+Code-panions are: Steve Carrington, Deidre Boddie, Mai Nguyen
+
 
 Randy's start up code and notes
 

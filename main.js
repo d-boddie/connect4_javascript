@@ -1,4 +1,4 @@
-//We used some of Randy's start up code and we were coached by Tim La and Missi.
+//We used some of Randy's start up code and we were coached by Nikal, Tim La and Missi.
 
 
 

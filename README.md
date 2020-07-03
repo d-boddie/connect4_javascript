@@ -1,3 +1,8 @@
+
+
+Code-panions are: Steve Carrington, Deidre Boddie, Mai Nguyen
+https://elisiaburt.gitlab.io/connect-4 
+
 # Create 7x6 Grid
     How?
         Flex?
