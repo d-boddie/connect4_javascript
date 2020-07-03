@@ -15,9 +15,14 @@ let currentPlayer = 1 // 1 is equal to yellow 2 equals red
 let player;
 
 const displayMessage = function (message) {
-    messageDiv = document.getElementById("message")  //we had innerHTML here
-    //messageDiv.textContent = `Current player is ${currentPlayer}`
-    document.body.appendChild(messageDiv)
+    document.getElementById("message").innerHTML = message
+
+}
+const displayTieMessage = function () {
+    displayMessage("Tie game!")
+}
+const displayWinMessage = function (playerNum) {
+    displayMessage("Winner is player:" + playerNum)
 }
 
 const displayCurrentPlayer = function (playerNum) {
@@ -35,9 +40,11 @@ function displayBoard(boardModel) {
 
 
 //This picks up the disc and puts it down and switches players
-function dropDisc(colNum) {
+function dropDisc() {
     let columnNode = event.currentTarget;
+    console.log(columnNode.id)
     selectedDisc = document.createElement("div")
+    let columnNum = Number(columnNode.id.slice(-1))
     if (columnNode.childElementCount < 6) {
 
         if (currentPlayer === 1) {
@@ -45,30 +52,186 @@ function dropDisc(colNum) {
             //boardModel[x][y]
             selectedDisc.className = "discYellow"
             columnNode.appendChild(selectedDisc);
-           currentPlayer = 2
             console.log(currentPlayer)
+            boardUpdate();
+            if (winnerVertical(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("WooHoo")
+                }, 2000);
+            } else if (winnerHorizontal(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Red")
+                }, 2000);
+            } else if (winnerDiagonalRight(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Blue")
+                }, 2000);
+            } else if (winnerDiagonalLeft(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Green")
+                }, 2000);
+        
+            } else {
+                draw(boardModel)
+            }
+            currentPlayer = 2
+
         } else {
             selectedDisc.className = "discRed"
             columnNode.appendChild(selectedDisc);
-            currentPlayer = 1
+            boardUpdate();
+            if (winnerVertical(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Yellow")
+                }, 2000);
+            } else if (winnerHorizontal(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Pink")
+                }, 2000);
+            } else if (winnerDiagonalRight(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("Purple")
+                }, 2000);
+            } else if (winnerDiagonalLeft(boardModel)) {
+                displayWinMessage(currentPlayer)
+                setTimeout(function () {
+                    document.location.href = "";
+                    console.log("BLACK!")
+                }, 2000);
+        
+            } else {
+                draw(boardModel)
+            }
             console.log(currentPlayer)
+            currentPlayer = 1
+
         }
     }
-    let columnNum = Number(columnNode.id.slice(-1))
+
     function boardUpdate() {
-        
+
         for (let row = boardModel.length - 1; row >= 0; row--) {
-            if (boardModel[row][columnNum] === 0) { 
+            if (boardModel[row][columnNum] === 0) {
                 boardModel[row][columnNum] = currentPlayer;
                 break;
             }
-           
+
         }
-   
+
     }
-    boardUpdate();
-    
-    
+
+  
+
+
+
+
+
+}
+
+const winnerVertical = function (model) {
+    for (let rowNum = 0; rowNum < 3; rowNum++) {
+        for (let colNum = 0; colNum < model[rowNum].length; colNum++) {
+            if (model[rowNum][colNum] === model[rowNum + 1][colNum] &&
+                model[rowNum][colNum] === model[rowNum + 2][colNum] &&
+                model[rowNum][colNum] === model[rowNum + 3][colNum] &&
+                model[rowNum][colNum] !== 0) {
+                console.log("vertical")
+                return true
+
+            }
+        }
+    }
+   return false
+
+}
+
+const winnerHorizontal = function (model) {
+    for (let rowNum = 0; rowNum < 6; rowNum++) {
+        for (let colNum = 0; colNum < model[rowNum].length; colNum++) {
+            if (model[rowNum][colNum] === model[rowNum][colNum + 1] &&
+                model[rowNum][colNum] === model[rowNum][colNum + 2] &&
+                model[rowNum][colNum] === model[rowNum][colNum + 3] &&
+                model[rowNum][colNum] !== 0) {
+                console.log("horizontal")
+                return true
+
+            }
+        }
+    }
+    return false
+
+}
+
+const winnerDiagonalRight = function (model) {
+
+    for (let rowNum = 0; rowNum < 3; rowNum++) {
+        for (let colNum = 0; colNum < model[rowNum].length; colNum++) {
+            if (model[rowNum][colNum] === model[rowNum + 1][colNum + 1] &&
+                model[rowNum][colNum] === model[rowNum + 2][colNum + 2] &&
+                model[rowNum][colNum] === model[rowNum + 3][colNum + 3] &&
+                model[rowNum][colNum] !== 0) {
+                console.log("Diagonal Down")
+                return true
+
+            }
+
+        }
+
+
+    }
+    return false
+}
+
+const winnerDiagonalLeft = function (model) {
+
+    for (let rowNum = 0; rowNum < 3; rowNum++) {
+        for (let colNum = 3; colNum < model[rowNum].length; colNum++) {
+            if (model[rowNum][colNum] === model[rowNum + 1][colNum - 1] &&
+                model[rowNum][colNum] === model[rowNum + 2][colNum - 2] &&
+                model[rowNum][colNum] === model[rowNum + 3][colNum - 3] &&
+                model[rowNum][colNum] !== 0) {
+                console.log("Diagonal Right")
+                return true
+
+            }
+
+        }
+
+    }
+    return false
+}
+
+const draw = function (model) {
+    let boardIsFull = 0
+    for (let rowNum = 0; rowNum < 6; rowNum++) {
+        for (let colNum = 0; colNum < model[rowNum].length; colNum++) {
+            if (model[rowNum][colNum] !== 0) {
+                boardIsFull++
+            }
+        }
+
+    }
+    console.log(boardIsFull)
+    if(boardIsFull === 42){
+        displayTieMessage()
+        // setTimeout(function () {
+        //     document.location.href = "";
+        // }, 2000);
+    }
 }
 
 

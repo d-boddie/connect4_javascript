@@ -14,7 +14,7 @@
 .column {
     background: purple;
     /* height: 400px; */
-    width: 200px;
+    width: 300px;
     outline: 5px solid darkblue;
     display: flex;
     flex-direction: column-reverse;
@@ -28,8 +28,8 @@
 }
 .disc{
     height:50px;
-    width:200px;
-    display: flex;
+    width:150px;
+ 
     margin:100px auto;
 
 }
