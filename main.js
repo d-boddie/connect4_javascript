@@ -15,17 +15,17 @@ let currentPlayer = 1// 1 is equal to yellow 2 equals red
 let player;
 
 const displayMessage = function (message) {
-    document.getElementById("message").innerHTML = message
+    document.getElementById("message").innerHTML = message;
 
 }
 const displayTieMessage = function () {
-    displayMessage("Tie game!")
+    displayMessage("Tie game!");
 }
 const displayWinMessage = function (playerNum) {
-    displayMessage("Winner is player:" + playerNum)
+    displayMessage("Winner is player:" + playerNum);
 }
 const displayCurrentPlayer = function (currentPlayer) {
-    displayMessage("Current player: " + currentPlayer)
+    displayMessage("Current player: " + currentPlayer);
    
 }
 
@@ -37,84 +37,106 @@ let selectedDisc;
 //This picks up the disc and puts it down and switches players
 function dropDisc() {
     let columnNode = event.currentTarget;
-    console.log(columnNode.id)
-    selectedDisc = document.createElement("div")
-    let columnNum = Number(columnNode.id.slice(-1))
+    console.log(columnNode.id);
+    selectedDisc = document.createElement("div");
+    let columnNum = Number(columnNode.id.slice(-1));
     if (columnNode.childElementCount < 6) {
         displayCurrentPlayer(currentPlayer);
         if (currentPlayer === 1) {
             //everytime we drop a disk we also want to update the boardModel 
             //boardModel[x][y]
-            selectedDisc.className = "discYellow"
+            selectedDisc.className = "discYellow";
             columnNode.appendChild(selectedDisc);
-            console.log(currentPlayer)
+            console.log(currentPlayer);
             boardUpdate();
             
             if (winnerVertical(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+               
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("WooHoo")
+                    console.log("WooHoo");
                 }, 2000);
+           
             } else if (winnerHorizontal(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+               
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Red")
+                    console.log("Red");
                 }, 2000);
+           
             } else if (winnerDiagonalRight(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+               
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Blue")
+                    console.log("Blue");
                 }, 2000);
+           
             } else if (winnerDiagonalLeft(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+                
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Green")
+                    console.log("Green");
                 }, 2000);
         
             } else {
-                draw(boardModel)
+                draw(boardModel);
             }
-            currentPlayer = 2
+            currentPlayer = 2;
 
         } else {
-            selectedDisc.className = "discRed"
+            selectedDisc.className = "discRed";
             columnNode.appendChild(selectedDisc);
             boardUpdate();
            
             if (winnerVertical(boardModel)) {
-                displayWinMessage(currentPlayer)
+            
+                displayWinMessage(currentPlayer);
+                
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Yellow")
+                    console.log("Yellow");
                 }, 2000);
+
             } else if (winnerHorizontal(boardModel)) {
-                displayWinMessage(currentPlayer)
+              
+                displayWinMessage(currentPlayer);
+              
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Pink")
+                    console.log("Pink");
                 }, 2000);
+
             } else if (winnerDiagonalRight(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+               
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("Purple")
+                    console.log("Purple");
                 }, 2000);
+            
             } else if (winnerDiagonalLeft(boardModel)) {
-                displayWinMessage(currentPlayer)
+               
+                displayWinMessage(currentPlayer);
+                
                 setTimeout(function () {
                     document.location.href = "";
-                    console.log("BLACK!")
+                    console.log("BLACK!");
                 }, 2000);
         
             } else {
-                draw(boardModel)
+                draw(boardModel);
             }
-            console.log(currentPlayer)
-            currentPlayer = 1
+            console.log(currentPlayer);
+            currentPlayer = 1;
 
         }
         
@@ -142,13 +164,13 @@ const winnerVertical = function (model) {
                 model[rowNum][colNum] === model[rowNum + 2][colNum] &&
                 model[rowNum][colNum] === model[rowNum + 3][colNum] &&
                 model[rowNum][colNum] !== 0) {
-                console.log("vertical")
-                return true
+                console.log("vertical");
+                return true;
 
             }
         }
     }
-   return false
+   return false;
 
 }
 
@@ -159,13 +181,13 @@ const winnerHorizontal = function (model) {
                 model[rowNum][colNum] === model[rowNum][colNum + 2] &&
                 model[rowNum][colNum] === model[rowNum][colNum + 3] &&
                 model[rowNum][colNum] !== 0) {
-                console.log("horizontal")
-                return true
+                console.log("horizontal");
+                return true;
 
             }
         }
     }
-    return false
+    return false;
 
 }
 
@@ -177,8 +199,8 @@ const winnerDiagonalRight = function (model) {
                 model[rowNum][colNum] === model[rowNum + 2][colNum + 2] &&
                 model[rowNum][colNum] === model[rowNum + 3][colNum + 3] &&
                 model[rowNum][colNum] !== 0) {
-                console.log("Diagonal Down")
-                return true
+                console.log("Diagonal Down");
+                return true;
 
             }
 
@@ -186,7 +208,7 @@ const winnerDiagonalRight = function (model) {
 
 
     }
-    return false
+    return false;
 }
 
 const winnerDiagonalLeft = function (model) {
@@ -197,38 +219,38 @@ const winnerDiagonalLeft = function (model) {
                 model[rowNum][colNum] === model[rowNum + 2][colNum - 2] &&
                 model[rowNum][colNum] === model[rowNum + 3][colNum - 3] &&
                 model[rowNum][colNum] !== 0) {
-                console.log("Diagonal Right")
-                return true
+                console.log("Diagonal Right");
+                return true;
 
             }
 
         }
 
     }
-    return false
+    return false;
 }
 
 const draw = function (model) {
-    let boardIsFull = 0
+    let boardIsFull = 0;
     for (let rowNum = 0; rowNum < 6; rowNum++) {
         for (let colNum = 0; colNum < model[rowNum].length; colNum++) {
             if (model[rowNum][colNum] !== 0) {
-                boardIsFull++
+                boardIsFull++;
             }
         }
 
     }
     
-    if(boardIsFull === 42){
-        displayTieMessage()
+    if (boardIsFull === 42){
+        displayTieMessage();
         
     }
 }
 
 
 function initializeGame() {
-    createColEvtLstnr()
-    displayCurrentPlayer(currentPlayer)
+    createColEvtLstnr();
+    displayCurrentPlayer(currentPlayer);
     
 }
 initializeGame();
