@@ -21,12 +21,12 @@ const displayMessage = function (message) {
 const displayTieMessage = function () {
     displayMessage("Tie game!")
 }
-const displayWinMessage = function (playerNum) {
-    displayMessage("Winner is player:" + playerNum)
+const displayWinMessage = function (currentPlayer) {
+    displayMessage("Winner is player:" + currentPlayer)
 }
 
-const displayCurrentPlayer = function (playerNum) {
-    displayMessage("Current player: " + playerNum)
+const displayCurrentPlayer = function (currentPlayer) {
+    displayMessage("Current player: " + currentPlayer)
 }
 
 // displayPlayer.innerHTML = ("It is player" + currentPlayer + "turns") 

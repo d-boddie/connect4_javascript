@@ -6,9 +6,9 @@
     display: flex;
     border: 5px solid rgb(2, 2, 2);
     background: yellow;
-    height: 400px;
-    width: 500px;
-    margin: 100px auto;
+    height: 600px;
+    width: 600px;
+    margin: 50px auto;
 }
 
 .column {
@@ -30,8 +30,6 @@
     height:50px;
     width:150px;
  
-    margin:100px auto;
-
 }
 .discYellow{
     height:50px;
