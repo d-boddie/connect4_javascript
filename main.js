@@ -11,7 +11,7 @@ const boardModel = [
     [0, 0, 0, 0, 0, 0, 0]
 ]
 
-let currentPlayer = 1 // 1 is equal to yellow 2 equals red
+let currentPlayer = 1// 1 is equal to yellow 2 equals red
 let player;
 
 const displayMessage = function (message) {
@@ -21,22 +21,17 @@ const displayMessage = function (message) {
 const displayTieMessage = function () {
     displayMessage("Tie game!")
 }
-const displayWinMessage = function (currentPlayer) {
-    displayMessage("Winner is player:" + currentPlayer)
+const displayWinMessage = function (playerNum) {
+    displayMessage("Winner is player:" + playerNum)
 }
-
 const displayCurrentPlayer = function (currentPlayer) {
     displayMessage("Current player: " + currentPlayer)
+   
 }
 
-// displayPlayer.innerHTML = ("It is player" + currentPlayer + "turns") 
 
-//let mode = "inhand";
+
 let selectedDisc;
-
-function displayBoard(boardModel) {
-
-}
 
 
 //This picks up the disc and puts it down and switches players
@@ -46,7 +41,7 @@ function dropDisc() {
     selectedDisc = document.createElement("div")
     let columnNum = Number(columnNode.id.slice(-1))
     if (columnNode.childElementCount < 6) {
-
+        displayCurrentPlayer(currentPlayer);
         if (currentPlayer === 1) {
             //everytime we drop a disk we also want to update the boardModel 
             //boardModel[x][y]
@@ -54,6 +49,7 @@ function dropDisc() {
             columnNode.appendChild(selectedDisc);
             console.log(currentPlayer)
             boardUpdate();
+            
             if (winnerVertical(boardModel)) {
                 displayWinMessage(currentPlayer)
                 setTimeout(function () {
@@ -88,6 +84,7 @@ function dropDisc() {
             selectedDisc.className = "discRed"
             columnNode.appendChild(selectedDisc);
             boardUpdate();
+           
             if (winnerVertical(boardModel)) {
                 displayWinMessage(currentPlayer)
                 setTimeout(function () {
@@ -120,6 +117,7 @@ function dropDisc() {
             currentPlayer = 1
 
         }
+        
     }
 
     function boardUpdate() {
@@ -133,11 +131,6 @@ function dropDisc() {
         }
 
     }
-
-  
-
-
-
 
 
 }
@@ -225,23 +218,18 @@ const draw = function (model) {
         }
 
     }
-    console.log(boardIsFull)
+    
     if(boardIsFull === 42){
         displayTieMessage()
-        // setTimeout(function () {
-        //     document.location.href = "";
-        // }, 2000);
+        
     }
 }
 
 
-
-
-
 function initializeGame() {
-    displayBoard(boardModel)
     createColEvtLstnr()
     displayCurrentPlayer(currentPlayer)
+    
 }
 initializeGame();
 

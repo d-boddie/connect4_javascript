@@ -173,3 +173,17 @@ function checkBoard() {
       }
     }
     updateGameboard();
+
+
+
+
+    // function displayBoard(boardModel) {
+
+// }
+
+   // displayBoard(boardModel)
+
+
+   // setTimeout(function () {
+        //     document.location.href = "";
+        // }, 2000);
