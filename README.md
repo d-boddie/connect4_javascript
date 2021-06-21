@@ -1,7 +1,7 @@
 
 
-Code-panions are: Steve Carrington, Deidre Boddie, Mai Nguyen
-https://elisiaburt.gitlab.io/connect-4 
+Code-panions are: Steve Carrington, Deidre Boddie, Mai Nguyen, Elisia Burt
+https://d-boddie.github.io/connect4_javascript/
 
 # Create 7x6 Grid
     How?
